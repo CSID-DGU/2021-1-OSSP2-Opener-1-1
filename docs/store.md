@@ -4,7 +4,7 @@
          <div id="head">theme list</div><br>
          <meta http-equiv="Permissions-Policy" content="interest-cohort=()"/>
          <link rel="shortcut icon" href="#">
-         <meta charset="UTF-8" />
+         <meta charset="utf-8" />
          <title>welvi store</title> 
          <style media="screen">
                   body{                     
@@ -67,7 +67,7 @@
                                     var head = document.getElementById('head');
                                     var index = String(i);
          
-                                    head.insertAdjacentHTML('afterend', '<a href="' + url + '" id="' + index + '">' + itemRef.name + '</a><br>');                            
+                                    head.insertAdjacentHTML('afterend', '<a href="' + url + '" id="' + index + '" class="button">' + itemRef.name + '</a><br>');     
                                     //<a href="https://github.com/pages-themes/architect/zipball/master" class="button"> <small>Download</small> .zip file</a>
                                     const xhr = new XMLHttpRequest();
                                     xhr.responseType = 'blob';
