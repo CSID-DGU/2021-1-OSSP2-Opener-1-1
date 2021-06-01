@@ -1,6 +1,6 @@
 <html>
 <!--210525 업로드(완) 다운로드(완)-->
-<!--210827 로그인 화면에서 넘어오면 화면에 코드만 보이는 오류 발생-->
+<!--210828 로그인 화면에서 넘어오면 화면에 코드만 보이는 오류 발생-->
 <head>  
          <div id="head">theme list</div><br>
          <!--meta http-equiv="Permissions-Policy" content="interest-cohort=()"/-->
