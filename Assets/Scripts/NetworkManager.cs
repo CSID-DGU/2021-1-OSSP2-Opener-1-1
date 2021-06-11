@@ -26,10 +26,16 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     [Header("RoomPanel")]
     public GameObject RoomPanel;
     public Text ListText;
-    public Text ListText2;
     public Text RoomInfoText;
     public Text[] ChatText;
     public InputField ChatInput;
+    public Button ChatCloseBtn;
+    //public ScrollView ChatScrollView;
+
+    [Header("AlertPanel")]
+    public GameObject AlertPanel;
+    public Button CloseGameBtn;
+    public Button StayBtn;
 
     [Header("ETC")]
     public Text StatusText;
@@ -117,8 +123,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     /*닉네임, 룸 정보 생성*/
     public override void OnJoinedLobby()
     {
-        LobbyPanel.SetActive(true);
-        RoomPanel.SetActive(false);
+        /*LobbyPanel.SetActive(true);
+        RoomPanel.SetActive(false);*/
 
         string nickname_str = "";
         if (user_arguments==null) {
@@ -135,7 +141,9 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         PhotonNetwork.LocalPlayer.NickName = nickname_str;
         WelcomeText.text = PhotonNetwork.LocalPlayer.NickName + "님 환영합니다";
 
-        PhotonNetwork.CreateRoom(RoomInput.text == "" ? "Room" + Random.Range(0, 100) : RoomInput.text, new RoomOptions { MaxPlayers = 200 });
+        //PhotonNetwork.JoinRandomRoom(RoomName_str, 0);
+        PhotonNetwork.JoinOrCreateRoom(RoomName_str, new RoomOptions { MaxPlayers = 200 }, null);
+        //PhotonNetwork.CreateRoom(RoomInput.text == "" ? "Room" + Random.Range(0, 100) : RoomInput.text, new RoomOptions { MaxPlayers = 200 });
         
         myList.Clear();
     }
@@ -147,7 +155,25 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         LobbyPanel.SetActive(false);
         RoomPanel.SetActive(false);
     }
+
+    public void Quit()
+    {
+        AlertPanel.SetActive(true);
+    }
+
+    public void RealQuit()
+    {
+        Application.Quit(); //어플리케이션 종료
+    }
+
+    public void NotQuit()
+    {
+        AlertPanel.SetActive(false);
+    }
+
     #endregion
+
+
 
 
     #region 방
@@ -184,20 +210,26 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     void RoomRenewal()
     {
-        ListText.text = "[참여자]\n";
-        ListText2.text = "[마이크]\n";
+        ListText.text = "[참여자] ";
 
         for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++) {
-            ListText.text += PhotonNetwork.PlayerList[i].NickName + ((i + 1 == PhotonNetwork.PlayerList.Length) ? "" : "\n");
-            ListText2.text += PhotonNetwork.PlayerList[i].NickName + ((i + 1 == PhotonNetwork.PlayerList.Length) ? "" : "\n");
+            ListText.text += PhotonNetwork.PlayerList[i].NickName + ((i + 1 == PhotonNetwork.PlayerList.Length) ? "" : ", ");
         }
-        RoomInfoText.text = PhotonNetwork.CurrentRoom.Name + " / " + PhotonNetwork.CurrentRoom.PlayerCount + "명 / " + PhotonNetwork.CurrentRoom.MaxPlayers + "최대";
+        RoomInfoText.text = "방이름: " + PhotonNetwork.CurrentRoom.Name + " / " + PhotonNetwork.CurrentRoom.PlayerCount + "명 / 최대 : " + PhotonNetwork.CurrentRoom.MaxPlayers + "명";
     }
 
     public void ScreenToggle()
     {
         Screen.fullScreen=!Screen.fullScreen;
     }
+
+
+    public void CloseChat()
+    {
+        //ListText.text = "[눌림] ";
+        //ChatScrollView.SetActive(false);
+    }
+
     #endregion
 
 
