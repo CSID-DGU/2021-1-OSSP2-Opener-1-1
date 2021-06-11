@@ -117,8 +117,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     /*닉네임, 룸 정보 생성*/
     public override void OnJoinedLobby()
     {
-        LobbyPanel.SetActive(true);
-        RoomPanel.SetActive(false);
+        //LobbyPanel.SetActive(true);
+        //RoomPanel.SetActive(false);
 
         string nickname_str = "";
         if (user_arguments==null) {
@@ -135,7 +135,9 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         PhotonNetwork.LocalPlayer.NickName = nickname_str;
         WelcomeText.text = PhotonNetwork.LocalPlayer.NickName + "님 환영합니다";
 
-        PhotonNetwork.CreateRoom(RoomInput.text == "" ? "Room" + Random.Range(0, 100) : RoomInput.text, new RoomOptions { MaxPlayers = 200 });
+        //PhotonNetwork.JoinRandomRoom(RoomName_str, 0);
+        PhotonNetwork.JoinOrCreateRoom(RoomName_str, new RoomOptions { MaxPlayers = 200 }, null);
+        //PhotonNetwork.CreateRoom(RoomInput.text == "" ? "Room" + Random.Range(0, 100) : RoomInput.text, new RoomOptions { MaxPlayers = 200 });
         
         myList.Clear();
     }
