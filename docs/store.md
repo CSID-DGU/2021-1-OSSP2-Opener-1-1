@@ -49,14 +49,14 @@
 <script>
          <!--initialize firebase-->
          var config = {
-         apiKey: "AIzaSyBFpJ_jHiLPpl4HZckHefuj4_XJxSQTvlg",
-         authDomain: "opensw-opener.firebaseapp.com",
-         databaseURL: "https://opensw-opener-default-rtdb.firebaseio.com",
-         projectId: "opensw-opener",
-         storageBucket: "opensw-opener.appspot.com",
-         messagingSenderId: "1073815196228",
-         appId: "1:1073815196228:web:429c5a2c3af05df4922211",
-         measurementId: "G-GCDBT9FVRL"
+         apiKey: "AIzaSyBSOWs_oAaro0Vbd12OFGVOjBju2T4U-_E",
+         authDomain: "unity-login-ossp.firebaseapp.com",
+         databaseURL: "https://unity-login-ossp-default-rtdb.firebaseio.com",
+         projectId: "unity-login-ossp",
+         storageBucket: "unity-login-ossp.appspot.com",
+         messagingSenderId: "733261763610",
+         appId: "1:733261763610:web:2a77fc42369d6999e1eda3",
+         measurementId: "G-JYXE4KP83T"
          };
          firebase.initializeApp(config);
          firebase.analytics; 
