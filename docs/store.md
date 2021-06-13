@@ -48,7 +48,7 @@
 
 
 <script>
-         consol.log(document.getElementById('userId').innerText);
+         console.log(document.getElementById('userId').innerText);
          
          <!--initialize firebase-->
          var config = {
