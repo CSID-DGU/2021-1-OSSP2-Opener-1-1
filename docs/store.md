@@ -46,8 +46,9 @@
 <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
 
+
 <script>
-         alert(document.getElementById('userId').value);
+         consol.log(document.getElementById('userId').innerText);
          
          <!--initialize firebase-->
          var config = {
