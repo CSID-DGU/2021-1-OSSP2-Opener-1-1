@@ -41,28 +41,45 @@
          var ui = new firebaseui.auth.AuthUI(firebase.auth());
          
          var uiConfig = {
-         callbacks: {
-                  signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-                           return true;
-                  },
-                  uiShown: function() {
-                           document.getElementById('loader').style.display = 'none';
-                  }
-         },
+         //callbacks: {
+         //         signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+         //                  return true;
+         //         },
+         //         uiShown: function() {
+         //                  document.getElementById('loader').style.display = 'none';
+         //        }
+         //},
          // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
          signInFlow: 'popup',
-         signInSuccessUrl: '2021-1-OSSP2-Opener-1-1/store.html',
+         signInSuccessUrl: '/',
          signInOptions: [
-                  {
-                           provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
-                           requireDisplayName: true
-                  }
-         ]
+         { 
+           provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+           requireDisplayName: true
+         },
+         ],
+
+         // the area where i assume something is going wrong...
+         callbacks: {
+                  signInSuccess: function(currentUser, credential, redirectUrl) {
+                  const userId = currentUser.uid;
+                  redirectUrl = `/store.html/${userId}`;
+                  return false
+                  },
+         }
+         };
+         //signInSuccessUrl: '2021-1-OSSP2-Opener-1-1/store.html',
+         //signInOptions: [
+         //         {
+         //                  provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+         //                  requireDisplayName: true
+         //         }
+         //]
          // Terms of service url.
                   //tosUrl: '<your-tos-url>',
          // Privacy policy url.
                   //privacyPolicyUrl: '<your-privacy-policy-url>'
-         };
+         //};
          
          <!--The start method will wait until the DOM is loaded.-->
          ui.start('#firebaseui-auth-container', uiConfig);    
