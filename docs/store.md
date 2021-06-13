@@ -47,8 +47,8 @@
 <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
 
 <!--Realtime Database-->
-<script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
-<pre id="ThemeList"></pre>
+<!--script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script-->
+<!--pre id="ThemeList"></pre-->
 
 <script>
          <!--initialize firebase-->
@@ -68,14 +68,10 @@
          firebase.auth().onAuthStateChanged(function(user) {
          if (user) {
                   console.log("Welvi Store login success");
-                  var name, email, photoUrl, uid, emailVerified;
+                  var name, email, uid;
                   name = user.displayName;
                   email = user.email;
-                  photoUrl = user.photoURL;
-                  emailVerified = user.emailVerified;
-                  uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
-                                    // this value to authenticate with your backend server, if
-                                    // you have one. Use User.getToken() instead.
+                  uid = user.uid;
          } else {
                   console.log("login fail");
          }
@@ -166,13 +162,29 @@
          //</section>
          
          //Realtime Database Get elements
-         const preThemeList = document.getElementById('ThemeList');
+         //const preThemeList = document.getElementById('ThemeList');
          
          //Realtime Database Create reference
-         const dbRefThmemList = firebase.database().ref().child('ThemeList');
+         //const dbRefThmemList = firebase.database().ref().child('ThemeList');
          
          //Realtime Database Sync ThemeList changes
-         dbRefThemeList.on('value', snap => console.log(snap.val()));
+         //dbRefThemeList.on('value', snap => console.log(snap.val()));
+         
+         // Get a reference to the database service
+         //var database = firebase.database();
+         //var ThemeListRef = firebase.database().ref('users/' + uid + '/ThemeList');
+         
+         //ThemeListRef.get().then((snapshow) => {
+         //         if(snapshot.exists()) {
+         //                  console.log(snapshot.val());
+         //         } else { console.log("No data available"); }
+         }).catch((error) => { console.error(error); });
+         
+         //function writeUserData(userId, name, email, imageUrl) {
+         //ThemeListRef.set({
+                  
+         //         });
+         //}
          
 </script>
 </body>
