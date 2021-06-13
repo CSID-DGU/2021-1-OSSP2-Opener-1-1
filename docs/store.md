@@ -90,21 +90,14 @@
                                     var index = String(i);
                                     
                                     list.insertAdjacentHTML('afterend', '<a href="' + url + '" id="listNum' + index + '" class="btn">' + itemRef.name + '</a><br><br>');
-                                    //list.insertAdjacentHTML('afterend', '<a class="button" href="' + url + '" id="listNum' + index + '">' + itemRef.name + '</a><br><br>');
-                                    //<a class="buttons" href="https://github.com/pages-themes/dinky/zipball/master">Download ZIP</a>
-                                    //<button type="button" onclick="location.href='joinUs.jsp' ">회원가입</button>s
-                                    //<a href="https://github.com/pages-themes/hacker/zipball/master" class="btn">Download as .zip</a>
          
                                     const xhr = new XMLHttpRequest();
                                     xhr.responseType = 'blob';
                                     xhr.onload = function(event) { var blob = xhr.response; };
                                     xhr.open('GET', url);
                                     xhr.send();
-                                    //i++;
                                     });
                   }).catch(function(error) { 
-                           // A full list of error codes is available at
-                           // https://firebase.google.com/docs/storage/web/handle-errors
                            switch (error.code) {
                                     case 'storage/object-not-found':
                                     // File doesn't exist
@@ -155,49 +148,8 @@
                   
                   );
          });
-                    
-         /*
-         var database = firebase.database();
-         <!--realtime database Get elements-->
-         const uid = K0vWmATzYXfdLc1ZSfzncKVoSRB3; // 임시값
-         const themeList = document.getElementById('users/'+uid+'/themeList');
-         for(var j=0; j<max; j++){
-                  var indexj = String(j);
-                  <!--realtime database Create references-->
-                  const dbRefTheme = firebase.database().ref().child('listNum'+indexj); // j 선언해야함
-                  <!--realtime daatabase Sync users channes : 'value' event, callbach function -->
-                  dbRefTheme.on('value', snap => {   
-                           console.log(snap.val());
-                           themeList.innerText = JSON.stringify(snap.val(), null, 3);
-                  });
-         }
-         
          list.insertAdjacentHTML('afterend', '</section>');
          //</section>
-         
-         */
-         /*
-         <!--Firestore Database-->
-         var userEmail = "test1@test.com"// 임시값
-         var firestore = firebase.firestore();
-         const docRef = firestore.collection("user").doc(userEmail);
-         for(var j=0; j<i; j++) {
-                  var listNumber = "listNum"+String(j);
-                  const downloadButton = document.getElementById(listNumber);
-                  downloadButton.addEventListener("click", function(){
-                           const listToDB = downloadButton.innerText;
-                           console.log("I am going to save "+listToDB+" to Firesotre");
-                           docRef.set({
-                                   downloadList : listToDB 
-                           }, { merge: true }).then(() => {
-                           console.log(listToDB+" successfully written!");
-                           })
-                           .catch((error) => {
-                           console.error("Error writing document: ", error);
-                           });
-                  })
-         }
-         */
 </script>
 </body>
         
