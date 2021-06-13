@@ -178,7 +178,7 @@
          //         if(snapshot.exists()) {
          //                  console.log(snapshot.val());
          //         } else { console.log("No data available"); }
-         }).catch((error) => { console.error(error); });
+         //}).catch((error) => { console.error(error); });
          
          //function writeUserData(userId, name, email, imageUrl) {
          //ThemeListRef.set({
