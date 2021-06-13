@@ -64,7 +64,7 @@
                   signInSuccess: function(currentUser, credential, redirectUrl) {
                   const userId = currentUser.uid; 
                   // Manually redirect.
-                  window.location.assign(`/users/${userId}`);
+                  window.location.assign(`/store.html/${userId}`);
                   // Do not automatically redirect.
                   return false;
                   },
