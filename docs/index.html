@@ -63,8 +63,9 @@
          callbacks: {
                   signInSuccessWithAuthResult: function(currentUser, credential, redirectUrl) {
                   const userId = currentUser.uid; 
+                           console.log(userId);
                   // Manually redirect.
-                  window.location.assign(`/2021-1-OSSP2-Opener-1-1/store.html/users/${userId}`);
+                  window.location.assign(`/2021-1-OSSP2-Opener-1-1/store/users/${userId}`);
                   // Do not automatically redirect.
                   return false;
                   },
