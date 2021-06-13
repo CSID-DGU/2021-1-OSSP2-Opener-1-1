@@ -127,7 +127,7 @@
                   <!--create a storage ref-->
                   var storageRef = firebase.storage().ref('welvi/withhold/' + file.name);
          
-         var uploadTheme = document.getElementById('uploadThere');
+         var uploadTheme = document.getElementById('uploadTheme');
          uploadTheme.insertAdjacentHTML('afterend', '<div id="fileName">'+file.name+'</div>');
          
                   <!--upload file-->
