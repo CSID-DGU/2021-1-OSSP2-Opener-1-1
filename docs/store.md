@@ -1,11 +1,13 @@
 <html>
-<!--210525 업로드(완) 다운로드(완)-->
-<!--210528 로그인 화면에서 넘어오면 화면에 코드만 보이는 오류 발생->.md 말고 .html 사용하여 해결. 대신 제공된 ui 사용 불가-->
+<!--210525 upload(clear) download(clear)-->
 <head>  
-         <div id="head">theme list</div><br>
-         <!--meta http-equiv="Permissions-Policy" content="interest-cohort=()"/-->
+         <base href="/">
+         <!--h1><p style="text-align:center;">Welcome to welvi store</p></h1-->
+         <h1 id="list">Welcome to welvi store</h1>
+         <meta charset="utf-8">
+         <!--div id="list">theme list</div><br><br-->
+         <meta http-equiv="Permissions-Policy" content="interest-cohort=()"/>
          <link rel="shortcut icon" href="#">
-         <meta charset="utf-8" />
          <title>welvi store</title> 
          <style media="screen">
                   body{                     
@@ -27,15 +29,32 @@
                   }
          </style>
 </head>
-
+         
 <body>
-
+<h2 id="list">Upload Your Theme!</h2>
+         <div class="theme-picker-view-toggle open" data-action="click:theme-picker#toggleFullPicker">
+          <label className="btn btn-primary" for="fileButton">upload</label>
+          <input type="file" value="upload" id="fileButton" style="display:none"/><br>
+        </div>
 <progress value="0" max="100" id="uploader">0%</progress>
-<input type="file" value="upload" id="fileButton" />
+<!--input type="file" value="upload" id="fileButton" /-->
+<!--button class="btn btn-primary" type="submit" id="page-publish" data-action="click:theme-picker#onPublishClick">Select theme</button-->
+<!--button class="btn btn-primary" type="submit" id="page-publish" data-action="click:theme-picker#onPublishClick">Select theme</button-->
          
 <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-analytics.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-storage.js"></script>             
+                  
+<!--Authentication-->         
+<script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
+         
+<!--Realtime Database-->         
+<!--script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script-->
+<!--pre id="users"></pre-->
+<!--Realtime Database-->
+<!--script src="https://www.gstatic.com/firebasejs/6.3.2/firebase-database.js"></script-->
+         
          
 <script>
          <!--initialize firebase-->
@@ -50,7 +69,7 @@
          measurementId: "G-GCDBT9FVRL"
          };
          firebase.initializeApp(config);
-         firebase.analytics();
+         firebase.analytics; 
          
           <!-- download file-->
          var storage = firebase.storage();
@@ -58,24 +77,30 @@
          var listRef = storageRef.child('welvi/library');
          
          <!-- Find all the items.-->
+         var i=-1;
+         var list = document.getElementById('list');
+         list.insertAdjacentHTML('afterend', '<section id="downloads">');
+         //<section id="downloads">
          listRef.listAll().then(function(res) {
-                  var i=0;
                   res.items.forEach(function(itemRef) { 
                            console.log(itemRef);
                            itemRef.getDownloadURL().then(function(url) {
                                     console.log('File available at', url);
-                                    
-                                    var head = document.getElementById('head');
+                                    i++;
                                     var index = String(i);
+                                    
+                                    list.insertAdjacentHTML('afterend', '<a href="' + url + '" id="listNum' + index + '" class="btn">' + itemRef.name + '</a><br><br>');
+                                    //list.insertAdjacentHTML('afterend', '<a class="button" href="' + url + '" id="listNum' + index + '">' + itemRef.name + '</a><br><br>');
+                                    //<a class="buttons" href="https://github.com/pages-themes/dinky/zipball/master">Download ZIP</a>
+                                    //<button type="button" onclick="location.href='joinUs.jsp' ">회원가입</button>s
+                                    //<a href="https://github.com/pages-themes/hacker/zipball/master" class="btn">Download as .zip</a>
          
-                                    head.insertAdjacentHTML('afterend', '<a href="' + url + '" id="' + index + '" class="button">' + itemRef.name + '</a><br>');     
-                                    //<a href="https://github.com/pages-themes/architect/zipball/master" class="button"> <small>Download</small> .zip file</a>
                                     const xhr = new XMLHttpRequest();
                                     xhr.responseType = 'blob';
                                     xhr.onload = function(event) { var blob = xhr.response; };
                                     xhr.open('GET', url);
                                     xhr.send();
-                                    i++;
+                                    //i++;
                                     });
                   }).catch(function(error) { 
                            // A full list of error codes is available at
@@ -84,15 +109,12 @@
                                     case 'storage/object-not-found':
                                     // File doesn't exist
                                     break;
-
                                     case 'storage/unauthorized':
                                     // User doesn't have permission to access the object
                                     break;
-
                                     case 'storage/canceled':
                                     // User canceled the upload
                                     break;
-
                                     case 'storage/unknown':
                                     // Unknown error occurred, inspect the server response
                                     break;
@@ -133,9 +155,50 @@
                   
                   );
          });
-
+                    
+         /*
+         var database = firebase.database();
+         <!--realtime database Get elements-->
+         const uid = K0vWmATzYXfdLc1ZSfzncKVoSRB3; // 임시값
+         const themeList = document.getElementById('users/'+uid+'/themeList');
+         for(var j=0; j<max; j++){
+                  var indexj = String(j);
+                  <!--realtime database Create references-->
+                  const dbRefTheme = firebase.database().ref().child('listNum'+indexj); // j 선언해야함
+                  <!--realtime daatabase Sync users channes : 'value' event, callbach function -->
+                  dbRefTheme.on('value', snap => {   
+                           console.log(snap.val());
+                           themeList.innerText = JSON.stringify(snap.val(), null, 3);
+                  });
+         }
+         
+         list.insertAdjacentHTML('afterend', '</section>');
+         //</section>
+         
+         */
+         /*
+         <!--Firestore Database-->
+         var userEmail = "test1@test.com"// 임시값
+         var firestore = firebase.firestore();
+         const docRef = firestore.collection("user").doc(userEmail);
+         for(var j=0; j<i; j++) {
+                  var listNumber = "listNum"+String(j);
+                  const downloadButton = document.getElementById(listNumber);
+                  downloadButton.addEventListener("click", function(){
+                           const listToDB = downloadButton.innerText;
+                           console.log("I am going to save "+listToDB+" to Firesotre");
+                           docRef.set({
+                                   downloadList : listToDB 
+                           }, { merge: true }).then(() => {
+                           console.log(listToDB+" successfully written!");
+                           })
+                           .catch((error) => {
+                           console.error("Error writing document: ", error);
+                           });
+                  })
+         }
+         */
 </script>
-
 </body>
         
 </html>
