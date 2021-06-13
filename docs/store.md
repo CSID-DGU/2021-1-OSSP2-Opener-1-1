@@ -46,6 +46,10 @@
 <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
 
+<!--Realtime Database-->
+<script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+<pre id="ThemeList"></pre>
+
 <script>
          <!--initialize firebase-->
          var config = {
@@ -61,33 +65,22 @@
          firebase.initializeApp(config);
          firebase.analytics; 
          
-         var user = firebase.auth().currentUser;
+         firebase.auth().onAuthStateChanged(function(user) {
          if (user) {
-                  console.log("login success");
+                  console.log("Welvi Store login success");
+                  var name, email, photoUrl, uid, emailVerified;
+                  name = user.displayName;
+                  email = user.email;
+                  photoUrl = user.photoURL;
+                  emailVerified = user.emailVerified;
+                  uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
+                                    // this value to authenticate with your backend server, if
+                                    // you have one. Use User.getToken() instead.
          } else {
                   console.log("login fail");
          }
-         
-         firebase.auth().onAuthStateChanged(function(user2) {
-         if (user2) {
-                  console.log("login success2");
-         } else {
-                  console.log("login fail2");
-         }
          });
-         
-         user = firebase.auth().currentUser;
-         var name, email, photoUrl, uid, emailVerified;
 
-         if (user != null) {
-         name = user.displayName;
-         email = user.email;
-         photoUrl = user.photoURL;
-         emailVerified = user.emailVerified;
-         uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
-                   // this value to authenticate with your backend server, if
-                   // you have one. Use User.getToken() instead.
-         }
          
           <!-- download file-->
          var storage = firebase.storage();
@@ -171,6 +164,16 @@
          });
          list.insertAdjacentHTML('afterend', '</section>');
          //</section>
+         
+         //Realtime Database Get elements
+         const preThemeList = document.getElementById('ThemeList');
+         
+         //Realtime Database Create reference
+         const dbRefThmemList = firebase.database().ref().child('ThemeList');
+         
+         //Realtime Database Sync ThemeList changes
+         dbRefThemeList.on('value', snap => console.log(snap.val()));
+         
 </script>
 </body>
         
