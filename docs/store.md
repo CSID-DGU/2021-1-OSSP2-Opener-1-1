@@ -60,13 +60,21 @@
          };
          firebase.initializeApp(config);
          firebase.analytics; 
+         
          var user = firebase.auth().currentUser;
-
          if (user) {
                   console.log("login success");
          } else {
                   console.log("login fail");
          }
+         
+         firebase.auth().onAuthStateChanged(function(user2) {
+         if (user2) {
+                  console.log("login success2");
+         } else {
+                  console.log("login fail2");
+         }
+         });
          
           <!-- download file-->
          var storage = firebase.storage();
