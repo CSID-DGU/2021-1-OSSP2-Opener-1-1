@@ -60,12 +60,12 @@
          ],
 
          callbacks: {
-                  signInSuccess: function(currentUser, credential, redirectUrl) {
+                  signInSuccessWithAuthResult: function(currentUser, credential, redirectUrl) {
                   const userId = currentUser.uid; 
                   // Manually redirect.
                   window.location.assign(`2021-1-OSSP2-Opener-1-1/store.html/${userId}`);
                   // Do not automatically redirect.
-                  return false;
+                  return true;
                   },
                   uiShown: function() {
                            document.getElementById('loader').style.display = 'none';
