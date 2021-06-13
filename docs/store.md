@@ -47,6 +47,8 @@
 <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
 
 <script>
+         alert(document.getElementById('myVariable').value);
+         
          <!--initialize firebase-->
          var config = {
          apiKey: "AIzaSyBFpJ_jHiLPpl4HZckHefuj4_XJxSQTvlg",
