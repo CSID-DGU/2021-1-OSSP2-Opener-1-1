@@ -62,9 +62,11 @@
          // the area where i assume something is going wrong...
          callbacks: {
                   signInSuccess: function(currentUser, credential, redirectUrl) {
-                  const userId = currentUser.uid;
-                  redirectUrl = `/store.html/${userId}`;
-                  return false
+                  const userId = currentUser.uid; 
+                  // Manually redirect.
+                  window.location.assign(`/users/${userId}`);
+                  // Do not automatically redirect.
+                  return false;
                   },
          }
          };
