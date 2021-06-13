@@ -73,7 +73,7 @@
 <script>         
          const signUpButton = document.getElementById("signUp");
          
-         signInButton.addEventListener("click", function() {
+         signUpButton.addEventListener("click", function() {
                   var email=""; var password=""; 
                   firebase.auth().createUserWithEmailAndPassword(email, password)
                   .then((userCredential) => {
