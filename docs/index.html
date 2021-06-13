@@ -77,7 +77,7 @@
                   var email=""; var password=""; 
                   firebase.auth().createUserWithEmailAndPassword(email, password)
                   .then((userCredential) => {
-                  // Signed in
+                           console.log("create user success");
                   var user = userCredential.user;
                   // ...
                   })
