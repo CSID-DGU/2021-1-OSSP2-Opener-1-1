@@ -52,7 +52,7 @@
          // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
          signInFlow: 'popup',
          credentialHelper: 'none',
-         signInSuccessUrl: '/2021-1-OSSP2-Opener-1-1/',
+         signInSuccessUrl: '/2021-1-OSSP2-Opener-1-1/store/users/'+currentUser.uid,
          signInOptions: [
          { 
            provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
@@ -67,7 +67,7 @@
                   // Manually redirect.
                   window.location.assign(`/users/${userId}`);
                   // Do not automatically redirect.
-                  return false;
+                  return true;
                   },
                   uiShown: function() {
                            document.getElementById('loader').style.display = 'none';
