@@ -37,9 +37,6 @@
           <input type="file" value="upload" id="fileButton" style="display:none"/><br>
         </div>
 <progress value="0" max="100" id="uploader">0%</progress>
-<!--input type="file" value="upload" id="fileButton" /-->
-<!--button class="btn btn-primary" type="submit" id="page-publish" data-action="click:theme-picker#onPublishClick">Select theme</button-->
-<!--button class="btn btn-primary" type="submit" id="page-publish" data-action="click:theme-picker#onPublishClick">Select theme</button-->
          
 <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-analytics.js"></script>
@@ -48,14 +45,7 @@
 <!--Authentication-->         
 <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
-         
-<!--Realtime Database-->         
-<!--script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script-->
-<!--pre id="users"></pre-->
-<!--Realtime Database-->
-<!--script src="https://www.gstatic.com/firebasejs/6.3.2/firebase-database.js"></script-->
-         
-         
+
 <script>
          <!--initialize firebase-->
          var config = {
@@ -70,6 +60,13 @@
          };
          firebase.initializeApp(config);
          firebase.analytics; 
+         var user = firebase.auth().currentUser;
+
+         if (user) {
+                  // User is signed in.
+         } else {
+                  // No user is signed in.
+         }
          
           <!-- download file-->
          var storage = firebase.storage();
