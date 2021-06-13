@@ -45,6 +45,8 @@
          credentialHelper: 'none',
          signInSuccessUrl: '/2021-1-OSSP2-Opener-1-1/store',
          signInOptions: [
+         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+         firebase.auth.FacebookAuthProvider.PROVIDER_ID,
          { 
            provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
            requireDisplayName: true
@@ -62,7 +64,7 @@
                   },
                   uiShown: function() {
                            document.getElementById('loader').style.display = 'none';
-                 }
+                  }
          } 
          };
 
