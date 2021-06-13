@@ -2,10 +2,8 @@
 <!--210525 upload(clear) download(clear)-->
 <head>  
          <base href="/">
-         <!--h1><p style="text-align:center;">Welcome to welvi store</p></h1-->
          <h1 id="list">Welcome to welvi store</h1>
          <meta charset="utf-8">
-         <!--div id="list">theme list</div><br><br-->
          <meta http-equiv="Permissions-Policy" content="interest-cohort=()"/>
          <link rel="shortcut icon" href="#">
          <title>welvi store</title> 
@@ -32,10 +30,12 @@
          
 <body>
 <h2 id="list">Upload Your Theme!</h2>
-         <div class="theme-picker-view-toggle open" id="uploadTheme">
-          <label className="btn btn-primary" for="fileButton">upload</label>
-          <input type="file" value="upload" id="fileButton" style="display:none"/><br>
-        </div>
+         
+<div class="theme-picker-view-toggle open" id="uploadTheme">
+<label className="btn btn-primary" for="fileButton">upload</label>
+<input type="file" value="upload" id="fileButton" style="display:none"/><br>
+</div>
+         
 <progress value="0" max="100" id="uploader">0%</progress>
          
 <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
@@ -45,10 +45,6 @@
 <!--Authentication-->         
 <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
-
-<!--Realtime Database-->
-<!--script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script-->
-<!--pre id="ThemeList"></pre-->
 
 <script>
          <!--initialize firebase-->
@@ -72,9 +68,7 @@
                   name = user.displayName;
                   email = user.email;
                   uid = user.uid;
-         } else {
-                  console.log("login fail");
-         }
+         } else { console.log("login fail"); }
          });
 
          
@@ -134,8 +128,8 @@
                   <!--create a storage ref-->
                   var storageRef = firebase.storage().ref('welvi/withhold/' + file.name);
          
-         var uploadTheme = document.getElementById('uploadTheme');
-         uploadTheme.insertAdjacentHTML('afterend', '<div id="fileName">'+file.name+'</div>');
+                  var uploadTheme = document.getElementById('uploadTheme');
+                  uploadTheme.insertAdjacentHTML('afterend', '<div id="fileName">'+file.name+'</div>');
          
                   <!--upload file-->
                   var task = storageRef.put(file);
@@ -160,31 +154,6 @@
          });
          list.insertAdjacentHTML('afterend', '</section>');
          //</section>
-         
-         //Realtime Database Get elements
-         //const preThemeList = document.getElementById('ThemeList');
-         
-         //Realtime Database Create reference
-         //const dbRefThmemList = firebase.database().ref().child('ThemeList');
-         
-         //Realtime Database Sync ThemeList changes
-         //dbRefThemeList.on('value', snap => console.log(snap.val()));
-         
-         // Get a reference to the database service
-         //var database = firebase.database();
-         //var ThemeListRef = firebase.database().ref('users/' + uid + '/ThemeList');
-         
-         //ThemeListRef.get().then((snapshow) => {
-         //         if(snapshot.exists()) {
-         //                  console.log(snapshot.val());
-         //         } else { console.log("No data available"); }
-         //}).catch((error) => { console.error(error); });
-         
-         //function writeUserData(userId, name, email, imageUrl) {
-         //ThemeListRef.set({
-                  
-         //         });
-         //}
          
 </script>
 </body>
