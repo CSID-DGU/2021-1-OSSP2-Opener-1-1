@@ -32,7 +32,7 @@
          
 <body>
 <h2 id="list">Upload Your Theme!</h2>
-         <div class="theme-picker-view-toggle open" data-action="click:theme-picker#toggleFullPicker">
+         <div class="theme-picker-view-toggle open" id="uploadTheme">
           <label className="btn btn-primary" for="fileButton">upload</label>
           <input type="file" value="upload" id="fileButton" style="display:none"/><br>
         </div>
@@ -126,6 +126,9 @@
          
                   <!--create a storage ref-->
                   var storageRef = firebase.storage().ref('welvi/withhold/' + file.name);
+         
+         var uploadTheme = document.getElementById('uploadThere');
+         uploadTheme.insertAdjacentHTML('afterend', '<div id="fileName">'+file.name+'</div>');
          
                   <!--upload file-->
                   var task = storageRef.put(file);
