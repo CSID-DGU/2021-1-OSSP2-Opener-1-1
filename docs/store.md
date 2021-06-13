@@ -45,7 +45,7 @@
 <!--Authentication-->         
 <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
-
+<script src="index.html"></script>
 
 <script>
          console.log(document.getElementById('userId').innerText);
