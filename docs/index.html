@@ -66,8 +66,13 @@
          
          <!--The start method will wait until the DOM is loaded.-->
          ui.start('#firebaseui-auth-container', uiConfig);    
+</script>
          
          
+         <button type="button" id="signIn" class="firebaseui-id-submit firebaseui-button mdl-button mdl-js-button mdl-button--raised mdl-button--colored" data-upgraded=",MaterialButton">Sign In</button>
+<script>         
+         const signInButton = document.getElementById("signIn");
+         signInButton.addEventListener("click", frunction() {
          var email=""; var password=""; 
          firebase.auth().createUserWithEmailAndPassword(email, password)
          .then((userCredential) => {
@@ -79,11 +84,11 @@
          var errorCode = error.code;
          var errorMessage = error.message;
          // ..
-         });
-         
-         
+         });   
+         })
 </script>
 
+         
 </body>
         
 </html>
