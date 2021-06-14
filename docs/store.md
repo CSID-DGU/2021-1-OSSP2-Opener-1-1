@@ -1,5 +1,4 @@
 <html>
-<!--210525 upload(clear) download(clear)-->
 <head>  
          <base href="/">
          <h1 id="list">Welcome to welvi store</h1>
