@@ -15,7 +15,7 @@
 
 
 ### 팀원
-* 동국대학교 컴퓨터공학과 [김경민][github_link_km] : 내부테마, 플랫폼연동
+* 동국대학교 컴퓨터공학과 [김경민][github_link_km]
 [github_link_km]: https://github.com/kmkim2051
 * 동국대학교 컴퓨터공학과 [김민정][github_link_mj] : 내부테마, 플랫폼연동
 [github_link_mj]: https://github.com/kimminje0ng
