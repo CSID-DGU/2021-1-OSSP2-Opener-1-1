@@ -34,7 +34,7 @@
 3. 시작 전 대기실 화면
 ![Welvi_WaitingRoom](https://user-images.githubusercontent.com/21987690/122279466-06cf8380-cf23-11eb-8c6b-ace3737aedcd.jpg)
 4. 게임(테마) 시작 화면
-![Welvi_Theme] (https://user-images.githubusercontent.com/21987690/122279487-0b943780-cf23-11eb-91b5-2943876f5e8c.png)
+<img width="655" alt="Welvi_theme" src="https://user-images.githubusercontent.com/21987690/122279487-0b943780-cf23-11eb-91b5-2943876f5e8c.png">
 
 
 
