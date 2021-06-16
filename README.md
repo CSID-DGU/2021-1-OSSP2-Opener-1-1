@@ -6,7 +6,7 @@
     2. 왼쪽 branch에서 chat1 테마와 chat2 테마를 선택한 뒤
     3. 오른쪽 상단의 code를 눌러 zip파일로 다운받아주세요.
     4. Windows 기준, C:\Welvi\Map\[테마파일]\테마파일.exe 경로에 위치해야 합니다.
-    <br>(예) C:\Welvi\Map\Cat1_Theme\Cat1_Theme.exe
+    (예) C:\Welvi\Map\Cat1_Theme\Cat1_Theme.exe
 
 
 ### 개요
